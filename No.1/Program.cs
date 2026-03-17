@@ -14,7 +14,18 @@ for (int i = 0; i < n; i++)
     Console.WriteLine("Nota 1: "); e.Nota3 = double.Parse(Console.ReadLine());
     estudiantes.Add(e);
 }
-
+Console.WriteLine("Estudiantes registrados");
+Estudiante mejor = estudiantes[0];
+foreach(Estudiante e in estudiantes)
+{
+    e.MostrarInformacion();
+    if(e.CalcularPromedio() > mejor.CalcularPromedio())
+    {
+        mejor = e;
+    }
+}
+Console.WriteLine("El mejor estudiante es: ");
+mejor.MostrarInformacion();
 class Estudiante
 {
     public string Nombre;
@@ -30,8 +41,8 @@ class Estudiante
         if (CalcularPromedio() >= 61) return "Aprobado";
         else return "Reprobado";
     }
-    public void MostrarInfotmacion()
+    public void MostrarInformacion()
     {
-        Console.WriteLine($"Nombre: {Nombre} promedio: {CalcularPromedio:F2} Estado: {Estado}");
+        Console.WriteLine($"Nombre: {Nombre} promedio: {CalcularPromedio():F2} Estado: {Estado()}");
     }
 }
